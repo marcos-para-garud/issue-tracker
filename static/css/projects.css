@@ -1,0 +1,17 @@
+.card > .card-content > .card-title{
+    
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    background-color: #880e4f !important;
+    transition: transform 0.5s ease;
+}
+
+.fixed-action-btn{
+    bottom: 45px;
+    right: 24px;
+}
+

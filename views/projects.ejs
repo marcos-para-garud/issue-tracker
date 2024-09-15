@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../static/css/projects.css">
+
+<div class="container">
+    <div class="row">
+        <% if(locals.projects) {%>
+            <% locals.projects.forEach((project, index)=> {%>
+                <a href="./issues?projectId=<%= index %>" class="col s12">
+                    <div class="card blue-grey darken-1 hoverable" >
+                        <div class="card-content white-text">
+                            <span class="card-title"><%= project.name %></span>
+                            <p><%= project.description %></p>
+                            <small><%= project.author %></small>
+                        </div>
+                    </div>
+                </a>
+
+            <%})%>
+        <%}%>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red pulse tooltipped" href="./create" data-position="left" 
+        data-tooltip="Create a new Project">
+          <i class="large material-icons">add</i>
+        </a>
+    </div>
+</div>
+
+<script src="../static/js/projects.js"></script>

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="../static/css/issues_create.css">
+<div class="container">
+    <form method="post" action="/issues/create?projectId=<%= locals.projectIndex %>" class="row">
+        <h3 class="center-align">Create issue</h3>
+        <div class="input-field col s12 m6">
+            <input id="title" type="text" class="validate" name="title">
+            <label for="title">Issue Title</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <input id="author" type="text" class="validate" name="author">
+            <label for="author">Author Name</label>
+        </div>
+
+        <div class="input-field col s12">
+            Labels:
+            <div class="chips chips-autocomplete" id="lables">
+                
+            </div>
+            <span class="helper-text">Please provide labels</span>
+        </div>
+
+        <div class="input-field col s12">
+            <textarea id="description" class="materialize-textarea" name="description"></textarea>
+            <label for="description">Description</label>
+        </div>
+
+        <input hidden name="projectId" value="<%= locals.projectIndex %>">
+
+        <div class="center-align input-field col s12">
+            <button class="btn waves-effect waves-light" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
+<script src="../static/js/issues_create.js"></script>

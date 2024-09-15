@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="../static/css/issues.css">
+
+<div class="container">
+  <form method="GET" action="/issues" class="row card" id="issue-search-form">
+    <h5>Search Issues</h5>
+    <div class="input-field search-wrapper col s12">
+      <input id="search" placeholder="Search" name="search" type="search"><i class="material-icons">search</i>
+    </div>
+
+    <div class="col input-field s12 m6">
+      <select multiple id="author-select" name="authors">
+        <% locals.authors.forEach((author)=>{%>
+          <option value="<%=author %>"><%=author %></option>
+        <%}) %>
+      </select>
+      <label for="author-select">Select Author</label>
+    </div>
+
+    <div class="col input-field s12 m6">
+      <select multiple id="label-select" name="labels">
+        <% locals.labels.forEach((label)=>{%>
+          <option value="<%=label %>"><%=label %></option>
+        <%}) %>
+      </select>
+      <label for="label-select">Select Label</label>
+    </div>
+
+    <input type="hidden" name="projectId" value='<%= locals.projectId %>' >
+
+    <div class="center-align">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </form>
+
+
+  <!-- Show all the issues or filtered issues -->
+
+  <div class="row">
+
+    <% locals.issues.forEach(issue=>{%>
+      <div class="col s12 ">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">
+              <h4><%= issue.title %></h4>
+            </span>
+            <p><%= issue.description %></p>
+            <small>Author: <%= issue.author %></small>
+          </div>
+          <div class="card-action">
+
+            <!-- All the labels -->
+            <% issue.labels.forEach(label=>{%>
+              <div class="chip">
+                <%= label %>
+              </div>
+            <%})%>
+            
+          </div>
+        </div>
+      </div>
+
+      <%})%>
+
+
+  </div>
+
+
+  <!-- Floating button to add new Issue -->
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red pulse tooltipped" href="/issues/create?projectId=<%= locals.projectId %>" data-position="left"
+      data-tooltip="Create a new Issue">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+</div>
+
+<script src="../static/js/issues.js"></script>
